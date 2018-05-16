@@ -12,6 +12,7 @@
 		<h:messages/>
 		<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
 		<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
+		<h:inputHidden value="#{usuarioBean.destinoSalvar}"/>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Nome:" for="nome"/> 
 			<h:inputText id="nome" label="Nome" value="#{usuarioBean.usuario.nome}" 
@@ -38,22 +39,22 @@
 			</h:panelGroup>
 			<h:outputLabel value="Idioma:" for="idioma"/>
 			<h:selectOneMenu id="idioma" value="#{usuarioBean.usuario.idioma}">
-				<f:selectItem item="pt_Br" itemLabel="Português"/>
-				<f:selectItem item="en_US" itemLabel="English"/>
-				<f:selectItem item="es_Es" itemLabel="Español"/>
+				<f:selectItem itemValue="pt_BR" itemLabel="Português"/>
+				<f:selectItem itemValue="en_US" itemLabel="English"/>
+				<f:selectItem itemValue="es_ES" itemLabel="Español"/>
 			</h:selectOneMenu>
-			<h:outputLabel value="Login" for="login"/>
+			<h:outputLabel value="Login:" for="login"/>
 			<h:inputText id="login" label="login" 
 			value="#{usuarioBean.usuario.login}" size="15" maxlength="15" 
-			required="true" validator="Login deve ter no mínimo 5 e no máximo 15 
+			required="true" validatorMessage="Login deve ter no mínimo 5 e no máximo 15 
 			caracteres e só pode ter os símbolos '.' e '_'.">
-				<f:validateRegex pattern="([a-z][0-9]|[.]|[_]{5,15})"/>
+				<f:validateRegex pattern="([a-z]|[0-9]|[.]|[_]){5,15}"/>
 			</h:inputText>
 			<h:outputLabel value="Senha:" for="senha"/>
 			<h:inputSecret id="senha" label="Senha" value="#{usuarioBean.usuario.senha}" 
 			size="10" maxlength="10" required="true" redisplay="true"/>
 			<h:outputLabel value="Confirmar Senha:" for="confirmarsenha"/>
-			<h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.usuario.confirmarsenha}" 
+			<h:inputSecret id="confirmarsenha" label="Confirmar Senha" value="#{usuarioBean.confirmarSenha}" 
 			size="10" maxlength="10" required="true" redisplay="true"/>
 		</h:panelGrid>
 		<h:commandButton action="#{usuarioBean.salvar}" value="Salvar"/>

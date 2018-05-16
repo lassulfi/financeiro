@@ -1,5 +1,7 @@
 package br.com.javaparaweb.financeiro.web;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,6 +18,10 @@ public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	
 	private String confirmarSenha;
+	
+	private List<Usuario> lista;
+	
+	private String destinoSalvar;
 	
 	//Getters & Setters
 	public Usuario getUsuario() {
@@ -34,8 +40,26 @@ public class UsuarioBean {
 		this.confirmarSenha = confirmarSenha;
 	}
 	
+	public List<Usuario> getLista(){
+		if (this.lista == null) {
+			UsuarioRN usuarioRN = new UsuarioRN();
+			this.lista = usuarioRN.listar();
+		}
+		
+		return this.lista;
+	}
+	
+	public void setDestinoSalvar(String destinoSalvar) {
+		this.destinoSalvar = destinoSalvar;
+	}
+	
+	public String getDestinoSalvar() {
+		return destinoSalvar;
+	}
+	
 	//Métodos
 	public String novo() {
+		this.destinoSalvar = "usuariosucesso";
 		this.usuario = new Usuario();
 		this.usuario.setAtivo(true);
 		return "/publico/usuario";
@@ -54,6 +78,31 @@ public class UsuarioBean {
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.salvar(this.usuario);
 	
-		return "usuariosucesso";
-	}	
+		return this.destinoSalvar;
+	}
+	
+	public String editar() {
+		this.confirmarSenha = this.usuario.getSenha();
+		return "/publico/usuario";
+	}
+	
+	public String excluir() {
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.excluir(this.usuario);
+		this.lista = null;
+		return null;
+	}
+	
+	public String ativar() {
+		if (this.usuario.isAtivo()) {
+			this.usuario.setAtivo(false);
+		} else {
+			this.usuario.setAtivo(true);
+			
+		}
+		
+		UsuarioRN usuarioRN = new UsuarioRN();
+		usuarioRN.salvar(this.usuario);
+		return null;
+	}
 }
