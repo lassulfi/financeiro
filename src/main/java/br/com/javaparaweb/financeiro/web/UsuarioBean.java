@@ -94,7 +94,7 @@ public class UsuarioBean {
 	}
 	
 	public String ativar() {
-		if (this.usuario.isAtivo()) {
+		if (this.usuario.getAtivo()) {
 			this.usuario.setAtivo(false);
 		} else {
 			this.usuario.setAtivo(true);

@@ -97,7 +97,7 @@ public class Usuario implements Serializable{
 		this.idioma = idioma;
 	}
 
-	public boolean isAtivo() {
+	public boolean getAtivo() {
 		return ativo;
 	}
 

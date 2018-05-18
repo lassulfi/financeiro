@@ -45,7 +45,7 @@
 				</h:commandLink>
 			</h:column>
 			<h:column>
-				<h:commandLink action="#{usuario.excluir}" 
+				<h:commandLink action="#{usuarioBean.excluir}" 
 				onclick="if(!confirm('Confirma a exclusão do usuário #{usuario.nome}?')) return false;">
 					<h:graphicImage library="imagens" name="excluir16.png" style="border:0"/>
 					<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}"/>
