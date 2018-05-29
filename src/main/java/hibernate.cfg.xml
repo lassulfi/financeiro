@@ -28,5 +28,6 @@
 		<property name="use_sql_comments">true</property>
 		
 		<mapping class="br.com.javaparaweb.financeiro.usuario.Usuario"/>
+		<mapping class="br.com.javaparaweb.financeiro.conta.Conta"/>
 	</session-factory>
 </hibernate-configuration>
