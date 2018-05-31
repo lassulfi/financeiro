@@ -52,16 +52,18 @@
 				<h:commandLink>
 					<f:ajax execute="@this" render=":edicao"/>
 					<h:graphicImage library="imagens" name="editar16.png"/>
-					<f:setPropertyActionListener target="#{contatoBean.selecionada}" 
+					<f:setPropertyActionListener target="#{contaBean.selecionada}" 
 						value="#{conta}"/>
 				</h:commandLink>
 			</h:column>
-			<h:commandLink action="#{contaBean.excluir}">
-				<f:ajax execute="@this" render=":listagem"/>
-				<h:graphicImage library="imagens" name="excluir16.png"/>
-				<f:setPropertyActionListener target="#{contaBean.selecionada}" 
-					value="#{conta}"/>
-			</h:commandLink>
+			<h:column>
+				<h:commandLink action="#{contaBean.excluir}">
+					<f:ajax execute="@this" render=":listagem"/>
+					<h:graphicImage library="imagens" name="excluir16.png"/>
+					<f:setPropertyActionListener target="#{contaBean.selecionada}" 
+						value="#{conta}"/>
+				</h:commandLink>
+			</h:column>
 		</h:dataTable>
 	</h:form>	
 </h:body>
