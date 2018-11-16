@@ -16,6 +16,7 @@
 							<f:selectItems value="#{contaBean.lista}" var="conta"
 								itemValue="#{conta.conta}" itemLabel="#{conta.descricao}" />
 						</h:selectOneMenu></td>
+						<td><h:commandButton value="Categorias" action="/restrito/categoria"/></td>
 					<td align="left"><h:panelGroup
 							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
 							<h:commandLink action="admin/principal" title="Administrativo">
