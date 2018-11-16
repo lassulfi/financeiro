@@ -19,7 +19,6 @@ public class ConexaoHibernateFilter implements Filter {
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -27,7 +26,6 @@ public class ConexaoHibernateFilter implements Filter {
 	public void doFilter(ServletRequest servletRequest, 
 			ServletResponse servletResponse, FilterChain chain)
 			throws ServletException {
-		// TODO Auto-generated method stub
 		Session currentSession = this.sf.getCurrentSession();
 		
 		Transaction transaction = null;
@@ -40,13 +38,11 @@ public class ConexaoHibernateFilter implements Filter {
 				currentSession.close();
 			}
 		} catch (Throwable ex) {
-			// TODO: handle exception
 			try {
 				if (transaction.isActive()) {
 					transaction.rollback();
 				}
 			} catch (Throwable t) {
-				// TODO: handle exception
 				t.printStackTrace();
 			}
 			throw new ServletException(ex);
@@ -55,7 +51,6 @@ public class ConexaoHibernateFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
 		this.sf = HibernateUtil.getSessionFactory();
 	}
 
