@@ -36,7 +36,7 @@ public class AcaoRN {
 		for(Acao acao : this.listar(usuario)) {
 			acaoVirtual = new AcaoVirtual();
 			acaoVirtual.setAcao(acao);
-			cotacao = YahooFinanceUtil.getInfoCotacao(YahooFinanceUtil.INDICE_ULTIMO_DIA_PRECO_DIA_ACAO, acao);
+			cotacao = YahooFinanceUtil.getInfoCotacao(YahooFinanceUtil.INDICE_ULTIMO_PRECO_DIA_ACAO, acao);
 			if(cotacao != null) {
 				ultimoPreco = new Float(cotacao).floatValue();
 				acaoVirtual.setUltimoPreco(ultimoPreco);

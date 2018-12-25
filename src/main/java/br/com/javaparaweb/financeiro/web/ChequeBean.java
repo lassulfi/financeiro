@@ -58,6 +58,21 @@ public class ChequeBean {
 		lista = null;
 	}
 	
+	public void cancelar() {
+		ChequeRN chequeRN = new ChequeRN();
+		try {
+			chequeRN.cancelarCheque(selecionado);
+		} catch (RNException e) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			String texto = MensagemUtil.getMensagem("cheque_erro_cancelar");
+			FacesMessage msg = new FacesMessage(texto);
+			msg.setSeverity(FacesMessage.SEVERITY_WARN);
+			context.addMessage(null, msg);
+		}
+		
+		this.lista = null;
+	}
+	
 	public List<Cheque> getLista(){
 		if(lista == null) {
 			Conta conta = contextoBean.getContaAtiva();
@@ -67,7 +82,7 @@ public class ChequeBean {
 		
 		return lista;
 	}
-
+	
 	public Cheque getSelecionado() {
 		return selecionado;
 	}

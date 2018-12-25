@@ -9,28 +9,33 @@
 			<table width="100%">
 				<tr>
 					<td><h:commandButton value="Conta" action="/restrito/conta" />
-						<h:commandButton value="Categorias" action="/restrito/categoria"/>
-						<h:commandButton value="Lançamentos" action="/restrito/lancamento"/>
-						<h:commandButton value="Cheque" action="/restrito/cheque"/>
-						<h:selectOneMenu value="#{contextoBean.contaAtiva.conta}"
+						<h:commandButton value="Categorias" action="/restrito/categoria" />
+						<h:commandButton value="Lançamentos" action="/restrito/lancamento" />
+						<h:commandButton value="Cheque" action="/restrito/cheque" />
+						<h:commandButton value="Ações" action="/restrito/acao" />
+						<h:selectOneMenu
+							value="#{contextoBean.contaAtiva.conta}"
 							valueChangeListener="#{contextoBean.changeContaAtiva}"
 							rendered="#{not empty contextoBean and not empty contextoBean.contaAtiva}"
 							onchange="submit()">
 							<f:selectItems value="#{contaBean.lista}" var="conta"
 								itemValue="#{conta.conta}" itemLabel="#{conta.descricao}" />
 						</h:selectOneMenu></td>
-					<td align="left"><h:panelGroup
+					<td align="left">
+						<h:panelGroup
 							rendered="#{request.isUserInRole('ROLE_ADMINISTRADOR')}">
 							<h:commandLink action="admin/principal" title="Administrativo">
 								<h:graphicImage library="imagens" name="administrativo16.png" />
 							</h:commandLink>
-						</h:panelGroup> <h:commandLink action="/restrito/principal" title="Principal">
+						</h:panelGroup> 
+							<h:commandLink action="/restrito/principal" title="Principal">
 							<h:graphicImage library="imagens" name="administrativo16.png" />
-						</h:commandLink> <a
-						onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
-						title="Sair"> <h:graphicImage library="imagens"
-								name="logout16.png" />
-					</a></td>
+						</h:commandLink> 
+							<a onclick="document.location='#{request.contextPath}/j_spring_security_logout'"
+								title="Sair"> 
+							<h:graphicImage library="imagens" name="logout16.png" />
+							</a>
+					</td>
 				</tr>
 			</table>
 		</h:form>
